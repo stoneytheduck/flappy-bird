@@ -5,8 +5,9 @@
  */
 const configurations = {
     type: Phaser.AUTO,
-    width: 288,
-    height: 512,
+    // Use window.innerWidth and window.innerHeight for full browser window
+    width: window.innerWidth,
+    height: window.innerHeight,
     physics: {
         default: 'arcade',
         arcade: {
@@ -16,12 +17,17 @@ const configurations = {
             debug: false
         }
     },
+    scale: {
+        mode: Phaser.Scale.FIT, // Scale the game to fit the parent container
+        autoCenter: Phaser.Scale.CENTER_BOTH, // Center the game horizontally and vertically
+    },
     scene: {
         preload: preload,
         create: create,
         update: update
     }
-}
+};
+
 
 /**
  *  Game assets.
