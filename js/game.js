@@ -196,6 +196,23 @@ let scoreboardGroup
  */
 let score
 
+// Ensure that the Telegram WebApp API is ready
+if (window.Telegram) {
+    Telegram.WebApp.ready();
+}
+
+function expandApp() {
+    if (window.Telegram && window.Telegram.WebApp) {
+        Telegram.WebApp.expand();
+    } else {
+        console.error("Telegram WebApp is not available.");
+    }
+}
+
+// Call this function at an appropriate time, such as after the game initializes
+// or after a user interaction event
+expandApp();
+
 /**
  *   Load the game assets.
  */
