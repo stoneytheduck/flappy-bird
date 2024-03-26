@@ -1,33 +1,3 @@
-function getScreenDimensions() {
-    // Get the width and height of the screen
-    const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
-
-    // Calculate the aspect ratio
-    const aspectRatio = screenWidth / screenHeight;
-
-    // Calculate the height and width of the game canvas
-    let gameWidth, gameHeight;
-    if (aspectRatio > 288 / 512) {
-        // If the screen is wider than the game's aspect ratio
-        gameHeight = screenHeight;
-        gameWidth = Math.floor((gameHeight / 512) * 288);
-    } else {
-        // If the screen is taller than the game's aspect ratio
-        gameWidth = screenWidth;
-        gameHeight = Math.floor((gameWidth / 288) * 512);
-    }
-
-    return { width: gameWidth, height: gameHeight };
-}
-
-// Update game configurations with dynamically calculated width and height
-const screenDimensions = getScreenDimensions();
-const configurations = {
-    type: Phaser.AUTO,
-    width: screenDimensions.width,
-    height: screenDimensions.height,
-
 /**
  * 
  * Game configurations.
@@ -35,8 +5,8 @@ const configurations = {
  */
 const configurations = {
     type: Phaser.AUTO,
-    width: 288,
-    height: 512,
+    width: 340,
+    height: 600,
     physics: {
         default: 'arcade',
         arcade: {
