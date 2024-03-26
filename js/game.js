@@ -5,28 +5,31 @@
  */
 const configurations = {
     type: Phaser.AUTO,
-    // Use window.innerWidth and window.innerHeight for full browser window
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: window.innerWidth, // Dynamically set the width to the window's width
+    height: window.innerHeight, // Dynamically set the height to the window's height
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: {
-                y: 300
-            },
+            gravity: { y: 300 },
             debug: false
         }
-    },
-    scale: {
-        mode: Phaser.Scale.FIT, // Scale the game to fit the parent container
-        autoCenter: Phaser.Scale.CENTER_BOTH, // Center the game horizontally and vertically
     },
     scene: {
         preload: preload,
         create: create,
         update: update
+    },
+    scale: {
+        mode: Phaser.Scale.FIT, // This should ensure the game fits the screen
+        autoCenter: Phaser.Scale.CENTER_BOTH, // Center the game both horizontally and vertically
+        parent: 'phaser-example', // Make sure to set the parent div ID if your game is within a specific container
+        width: 288, // The original game width
+        height: 512 // The original game height
     }
 };
+
+const game = new Phaser.Game(configurations);
+
 
 
 /**
