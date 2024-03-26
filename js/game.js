@@ -5,14 +5,8 @@
  */
 const configurations = {
     type: Phaser.AUTO,
-    // Use window.innerWidth and window.innerHeight to get the screen size
-    width: window.innerWidth,
-    height: window.innerHeight,
-    scale: {
-        mode: Phaser.Scale.RESIZE, // This mode makes the game resize to fit the screen
-        parent: 'phaser-example', // ID of the DOM element to add the canvas to, adjust as necessary
-        autoCenter: Phaser.Scale.CENTER_BOTH, // Center the game canvas both horizontally and vertically
-    },
+    width: 288,
+    height: 512,
     physics: {
         default: 'arcade',
         arcade: {
@@ -27,12 +21,7 @@ const configurations = {
         create: create,
         update: update
     }
-};
-
-// Ensure the game resizes when the window size changes
-window.addEventListener('resize', () => {
-    game.scale.resize(window.innerWidth, window.innerHeight);
-});
+}
 
 /**
  *  Game assets.
