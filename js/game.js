@@ -5,12 +5,14 @@
  */
 const configurations = {
     type: Phaser.AUTO,
-    width: window.innerWidth, // Dynamically set the width to the window's width
-    height: window.innerHeight, // Dynamically set the height to the window's height
+    width: 288,
+    height: 512,
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 300 },
+            gravity: {
+                y: 300
+            },
             debug: false
         }
     },
@@ -18,15 +20,8 @@ const configurations = {
         preload: preload,
         create: create,
         update: update
-    },
-    scale: {
-        mode: Phaser.Scale.FIT, // This should ensure the game fits the screen
-        autoCenter: Phaser.Scale.CENTER_BOTH, // Center the game both horizontally and vertically
-        parent: 'phaser-example', // Make sure to set the parent div ID if your game is within a specific container
-        width: 288, // The original game width
-        height: 512 // The original game height
     }
-};
+}
 
 /**
  *  Game assets.
