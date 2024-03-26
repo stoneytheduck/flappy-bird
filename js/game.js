@@ -28,10 +28,6 @@ const configurations = {
     }
 };
 
-const game = new Phaser.Game(configurations);
-
-
-
 /**
  *  Game assets.
  *  @name assets
