@@ -14,7 +14,7 @@ const configurations = {
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 400 },
+            gravity: { y: 300 },
             debug: false
         }
     },
@@ -195,6 +195,18 @@ let scoreboardGroup
  * @type {number}
  */
 let score
+
+function create() {
+    // ... existing code ...
+
+    // Check if running inside Telegram Web App and expand the view
+    if (window.Telegram && window.Telegram.WebApp) {
+        Telegram.WebApp.ready();
+        Telegram.WebApp.expand();
+    }
+
+    // ... rest of your existing code ...
+}
 
 /**
  *   Load the game assets.
