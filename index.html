@@ -37,5 +37,21 @@
     <script src="js/game.js" type="text/javascript"></script>
 </head>
 <body>
+    <div id="ton-connect"></div>
+    <script>
+        const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+            manifestUrl: 'https://stoneytheduck.github.io/flappy-bird/manifest.json',
+            buttonRootId: 'ton-connect'
+        });
+    </script>
+
+    <!-- Optionally, if you want to programmatically connect to the wallet -->
+    <script>
+        async function connectToWallet() {
+            const connectedWallet = await tonConnectUI.connectWallet();
+            console.log(connectedWallet);
+        }
+        // You can also attach this function to a custom button event
+    </script>
 </body>
 </html>
