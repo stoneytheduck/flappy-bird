@@ -381,40 +381,46 @@ function create() {
  *  Update the scene frame by frame, responsible for move and rotate the bird and to create and move the pipes.
  */
 function update() {
+    // Calculate delta time
+    const currentTime = Date.now();
+    const deltaTime = (currentTime - lastUpdateTime) / 1000; // Convert to seconds
+    lastUpdateTime = currentTime;
+
+    // Update game logic based on delta time
     if (gameOver || !gameStarted)
-        return
+        return;
 
     if (framesMoveUp > 0)
-        framesMoveUp--
+        framesMoveUp--;
     else if (Phaser.Input.Keyboard.JustDown(upButton))
-        moveBird()
+        moveBird();
     else {
-        player.setVelocityY(120)
-
+        player.setVelocityY(120 * deltaTime); // Adjusted by delta time
         if (player.angle < 90)
-            player.angle += 1
+            player.angle += 1;
     }
 
     pipesGroup.children.iterate(function (child) {
         if (child == undefined)
-            return
+            return;
 
         if (child.x < -50)
-            child.destroy()
+            child.destroy();
         else
-            child.setVelocityX(-100)
-    })
+            child.setVelocityX(-100 * deltaTime); // Adjusted by delta time
+    });
 
     gapsGroup.children.iterate(function (child) {
-        child.body.setVelocityX(-100)
-    })
+        child.body.setVelocityX(-100 * deltaTime); // Adjusted by delta time
+    });
 
-    nextPipes++
+    nextPipes++;
     if (nextPipes === 130) {
-        makePipes(game.scene.scenes[0])
-        nextPipes = 0
+        makePipes(game.scene.scenes[0]);
+        nextPipes = 0;
     }
 }
+
 
 /**
  *  Bird collision event.
