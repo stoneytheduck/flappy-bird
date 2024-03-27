@@ -5,14 +5,16 @@
  */
 const configurations = {
     type: Phaser.AUTO,
-    width: 288,
-    height: 512,
+    width: 288, // Base width
+    height: 512, // Base height
+    scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH
+    },
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: {
-                y: 300
-            },
+            gravity: { y: 400 },
             debug: false
         }
     },
@@ -21,7 +23,7 @@ const configurations = {
         create: create,
         update: update
     }
-}
+};
 
 /**
  *  Game assets.
