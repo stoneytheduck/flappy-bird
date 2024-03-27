@@ -380,6 +380,8 @@ function create() {
 /**
  *  Update the scene frame by frame, responsible for move and rotate the bird and to create and move the pipes.
  */
+let lastUpdateTime = 0; // Declare lastUpdateTime as a global variable
+
 function update() {
     // Calculate delta time
     const currentTime = Date.now();
@@ -420,6 +422,7 @@ function update() {
         nextPipes = 0;
     }
 }
+
 
 
 /**
