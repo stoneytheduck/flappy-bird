@@ -1,5 +1,5 @@
 {
     "url": "https://stoneytheduck.github.io/flappy-bird/",
-    "name": "Flappers",                      // required
-    "iconUrl": "https://stoneytheduck.github.io/website/stoneytheduck.png",               // required
+    "name": "Flappers",
+    "iconUrl": "https://stoneytheduck.github.io/website/stoneytheduck.png",
   }
