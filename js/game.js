@@ -5,16 +5,14 @@
  */
 const configurations = {
     type: Phaser.AUTO,
-    width: 288, // Base width
-    height: 512, // Base height
-    scale: {
-        mode: Phaser.Scale.FIT,
-        autoCenter: Phaser.Scale.CENTER_BOTH
-    },
+    width: 288,
+    height: 512,
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 400 },
+            gravity: {
+                y: 300
+            },
             debug: false
         }
     },
@@ -23,7 +21,7 @@ const configurations = {
         create: create,
         update: update
     }
-};
+}
 
 /**
  *  Game assets.
@@ -196,23 +194,6 @@ let scoreboardGroup
  */
 let score
 
-// Ensure that the Telegram WebApp API is ready
-if (window.Telegram) {
-    Telegram.WebApp.ready();
-}
-
-function expandApp() {
-    if (window.Telegram && window.Telegram.WebApp) {
-        Telegram.WebApp.expand();
-    } else {
-        console.error("Telegram WebApp is not available.");
-    }
-}
-
-// Call this function at an appropriate time, such as after the game initializes
-// or after a user interaction event
-expandApp();
-
 /**
  *   Load the game assets.
  */
@@ -380,50 +361,41 @@ function create() {
 /**
  *  Update the scene frame by frame, responsible for move and rotate the bird and to create and move the pipes.
  */
-let lastUpdateTime = 0; // Declare lastUpdateTime as a global variable
-
 function update() {
-    // Calculate delta time
-    const currentTime = Date.now();
-    const deltaTime = (currentTime - lastUpdateTime) / 1000; // Convert to seconds
-    lastUpdateTime = currentTime;
-
-    // Update game logic based on delta time
     if (gameOver || !gameStarted)
-        return;
+        return
 
     if (framesMoveUp > 0)
-        framesMoveUp--;
+        framesMoveUp--
     else if (Phaser.Input.Keyboard.JustDown(upButton))
-        moveBird();
+        moveBird()
     else {
-        player.setVelocityY(120 * deltaTime); // Adjusted by delta time
+        player.setVelocityY(120)
+
         if (player.angle < 90)
-            player.angle += 1;
+            player.angle += 1
     }
 
     pipesGroup.children.iterate(function (child) {
         if (child == undefined)
-            return;
+            return
 
         if (child.x < -50)
-            child.destroy();
+            child.destroy()
         else
-            child.setVelocityX(-100 * deltaTime); // Adjusted by delta time
-    });
+            child.setVelocityX(-100)
+    })
 
     gapsGroup.children.iterate(function (child) {
-        child.body.setVelocityX(-100 * deltaTime); // Adjusted by delta time
-    });
+        child.body.setVelocityX(-100)
+    })
 
-    nextPipes++;
+    nextPipes++
     if (nextPipes === 130) {
-        makePipes(game.scene.scenes[0]);
-        nextPipes = 0;
+        makePipes(game.scene.scenes[0])
+        nextPipes = 0
     }
 }
-
-
 
 /**
  *  Bird collision event.
